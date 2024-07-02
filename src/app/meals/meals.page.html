@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-title>وعده های غذایی </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" pullingIcon="chevron-down-circle-outline" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="scrollable" >
+
+  <ion-card class="food-card" (click)="openModal(free.innerHTML)" *ngFor="let item of filteredItems" >
+    <ion-img [src]='item.img'></ion-img>
+    <h2 #free class="p2">{{item.label}}</h2>
+    <ion-card-subtitle class="p1"> {{item.description}}</ion-card-subtitle>
+    
+    
+    <ion-card-content>
+      <img src="../../assets/icon/padlock1.png" alt="padlock">
+      <img *ngIf="is_VIP" src="../../assets/icon/checked1.png" alt="check">
+      طرز تهیه
+    </ion-card-content>
+    </ion-card>
+
+
+    <!-- Modal 1 -->
+
+    <ion-modal [isOpen]="isOpen_1">
+      <ng-template>
+      <ion-header [translucent]="true">
+        <ion-toolbar color="success">
+          <ion-buttons slot="end">  
+            <ion-button fill="clear" (click)="close_1()">  
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title class="t1">{{items[0].label}}</ion-title>
+          
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="scrollable">
+      
+        <ion-card class="food-card" >
+          <ion-img [src]='items[0].img'></ion-img>
+  
+          <ion-card-content>
+            <img src="../../assets/icon/star.png" alt="star">
+            <ion-text>
+              مواد لازم:
+              - پاستا کامل (سبوس‌دار): 200 گرم
+              - سینه مرغ بدون پوست و استخوان: 200 گرم (به صورت نوارهای باریک برش دهید)
+              - سس پستو: 3 قاشق غذاخوری
+              - روغن زیتون: 1 قاشق غذاخوری
+              - سیر: 2 حبه (ریز خرد شده)
+              - گوجه‌فرنگی گیلاسی: 100 گرم (نصف شده)
+              - اسفناج تازه: 1 پیمانه
+              - نمک و فلفل سیاه: به میزان لازم
+              - آب لیمو ترش تازه: 1 قاشق غذاخوری
+              - پنیر پارمزان: در صورت تمایل برای تزیین
+  
+              <br>
+              <img src="../../assets/icon/star.png" alt="star">
+              طرز تهیه:
+              
+              1. پخت پاستا:
+              - در یک قابلمه بزرگ آب را به جوش بیاورید و کمی نمک به آن اضافه کنید.
+              - پاستا را به آب جوش اضافه کرده و طبق دستورالعمل بسته بندی بپزید تا زمانی که به حد نرم ولی نه زیاد برسد. سپس آبکش کرده و کنار بگذارید.
+              
+              2. آماده‌سازی مرغ:
+              - در یک تابه بزرگ، روغن زیتون را گرم کنید.
+              - سیر خرد شده را اضافه کرده و چند دقیقه تفت دهید تا عطر آن آزاد شود.
+              - نوارهای مرغ را به تابه اضافه کرده و با حرارت متوسط بپزید تا کاملاً پخته و طلایی شود. کمی نمک و فلفل به آن اضافه کنید.
+              
+              3. ترکیب مواد:
+              - گوجه‌فرنگی گیلاسی و اسفناج تازه را به تابه اضافه کرده و چند دقیقه تفت دهید تا گوجه‌ها کمی نرم شوند و اسفناج پژمرده شود.
+              - پاستای پخته شده را به تابه اضافه کنید و خوب مخلوط کنید تا همه مواد به طور یکنواخت ترکیب شوند.
+              - سس پستو و آب لیمو ترش تازه را اضافه کرده و خوب مخلوط کنید تا همه مواد به سس آغشته شوند.
+              
+              4. خدمت و تزیین:
+              - پاستا را در بشقاب‌های سرو بکشید.
+              - در صورت تمایل، کمی پنیر پارمزان رنده شده روی پاستا بریزید.
+              - می‌توانید با چند برگ تازه ریحان یا چند دانه گوجه‌فرنگی گیلاسی تزیین کنید.
+              
+              این پاستا رژیمی با مرغ و سس پستو نه تنها خوشمزه است، بلکه به دلیل استفاده از پاستای کامل و مواد سالم، گزینه‌ای مناسب برای رژیم غذایی سالم و متعادل است. نوش جان!
+
+            </ion-text>
+          </ion-card-content>
+          </ion-card>
+        </div>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <!-- modal 2 -->
+
+
+
+
+
+
+
+  </div>
+</ion-content>
+  <ion-footer>
+    <ion-toolbar>
+  <ion-tabs >
+    <ion-tab-bar >
+      <ion-tab-button (click)="profile()" >
+        <img src="../../assets/icon/athlete.png"  alt="profile">
+      </ion-tab-button>
+      <ion-tab-button (click)="meals()">
+        <img class="img1" src="../../assets/icon/food.png"  alt="healthy food">  
+      </ion-tab-button>
+      <ion-tab-button (click)="Exercises()">
+        <img src="../../assets/icon/muscle.png"  alt="Exercises">
+      </ion-tab-button>
+      
+    </ion-tab-bar>
+  </ion-tabs>
+  </ion-toolbar>
+  </ion-footer>
+

@@ -1,0 +1,126 @@
+@font-face {
+    font-family: iransance;
+    src: url(../../assets/fonts/Iransanse.ttf);
+  }
+  * {
+      font-family: iransance !important;
+    }
+    ion-content{
+      direction: rtl;
+    }
+    .scrollable {
+      padding-bottom: 36px;
+  }
+  ion-card {
+    border-radius: 8px;
+    direction: rtl !important;
+    
+  }
+  ion-text {
+    font-size: 18px;
+  }
+  .t1 {
+    font-size: 15px;
+  }
+  .p1 {
+    padding-right: 12px;
+    padding-top: 7px;
+  }
+  .p2 {
+    padding-right: 12px;
+    padding-top: 7px;
+    color: black;
+  }
+  .img1 {
+    border: 1px solid rgb(197, 57, 57);
+    border-radius: 50%;
+    padding: 4px;
+  }
+    ion-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+  }
+
+  .food-card {
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    }
+    
+    .food-card ion-img {
+    height: 200px;
+    object-fit: cover;
+    }
+    
+    .food-card ion-card-header {
+    text-align: left;
+    }
+    
+    .food-card ion-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    }
+    
+    .food-card ion-card-subtitle {
+    font-size: 1rem;
+    color: #757575;
+    }
+    
+    .food-card ion-card-content {
+    font-size: 1rem;
+    color: #333;
+    }
+
+    /* تعریف انیمیشن fadeIn */
+/* تعریف انیمیشن جذاب‌تر */
+@keyframes fancyEntrance {
+  0% {
+  transform: scale(0.5) rotate(-10deg);
+  opacity: 0;
+  }
+  50% {
+  transform: scale(1.1) rotate(5deg);
+  opacity: 0.7;
+  }
+  100% {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+  }
+  }
+  
+  /* اعمال انیمیشن به کارت غذا */
+  .food-card {
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fancyEntrance 1.5s ease-out;
+  }
+  
+  .food-card ion-img {
+  height: 200px;
+  object-fit: cover;
+  }
+  
+  .food-card ion-card-header {
+  text-align: left;
+  }
+  
+  .food-card ion-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  }
+  
+  .food-card ion-card-subtitle {
+  font-size: 1rem;
+  color: #757575;
+  }
+  
+  .food-card ion-card-content {
+  font-size: 1rem;
+  color: #333;
+  }

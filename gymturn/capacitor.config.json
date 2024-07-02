@@ -1,0 +1,10 @@
+{
+  "appId": "com.gym.gymturn",
+  "appName": "GymTurn",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

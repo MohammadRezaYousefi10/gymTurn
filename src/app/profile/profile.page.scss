@@ -1,0 +1,49 @@
+@font-face {
+    font-family: iransance;
+    src: url(../../assets/fonts/Iransanse.ttf);
+  }
+  * {
+      font-family: iransance !important;
+    }
+    ion-content{
+      direction: rtl;
+      position: relative;
+    }
+    .scrollable {
+      padding-bottom: 36px;
+    }
+    ion-chip{
+      /* margin-top: 14px;
+      margin-bottom: 5px; */
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      box-shadow: 0px 0px 20px 3px rgba(51, 44, 44, 0.6);
+      
+    }
+    .lbl1{
+      /* margin-top: 14px;
+      margin-bottom: 5px; */
+      position: absolute;
+      top: 20px;
+      left: 30px;  
+      color: #ffffff;
+    }
+    
+    .img1 {
+      border: 1px solid rgb(50, 48, 38);
+      border-radius: 50%;
+      padding: 4px;
+    }
+    .img2 {
+      width: 100%;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    
+    ion-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1;
+  }

@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>GymTurn</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (submit)="register()" >
+    <ion-card>
+      <ion-label>نام کاربری</ion-label>
+      <ion-item>
+        <ion-input type="text" name="name" [(ngModel)]="name"></ion-input>
+        <ion-icon item-left name="person-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>رمز عبور </ion-label>
+      <ion-item>
+        <ion-input type="password" ></ion-input>
+        <ion-icon item-left name="lock-closed-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>قد (سانتی متر)</ion-label>
+      <ion-item>
+        <ion-input type="number"></ion-input>
+        <ion-icon name="accessibility-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>وزن (کیلوگرم)</ion-label>
+      <ion-item>
+        <ion-input type="number"></ion-input>
+        <ion-icon name="speedometer-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>رشته ورزشی</ion-label>
+      <ion-item>
+        <ion-input type="text"></ion-input>
+        <ion-icon name="barbell-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>ایمیل</ion-label>
+      <ion-item>
+        <ion-input type="email" name="email" [(ngModel)]="email"></ion-input>
+        <ion-icon item-left name="mail-outline"></ion-icon>
+      </ion-item>
+      <ion-button type="submit" size="full" color="success" expand="block" shape="round">ثبت نام</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

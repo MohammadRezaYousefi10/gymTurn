@@ -1,0 +1,109 @@
+ion-item {
+    padding: 12px;
+  
+}
+ion-text {
+    font-size: 25px;
+    font-weight: 600;
+    
+}
+@font-face {
+    font-family: iransance;
+    src: url(../../assets/fonts/Iransanse.ttf);
+  }
+
+  
+.t1 {
+    font-family: iransance !important;
+}
+
+
+* {
+  font-family: iransance !important;
+}
+
+ion-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+.scrollable {
+    padding-bottom: 36px;
+}
+.img1 {
+    border: 1px solid rgb(126, 108, 108);
+    border-radius: 50%;
+}
+.img2 {
+    border: 1px solid rgb(190, 167, 53);
+    border-radius: 50%;
+    padding: 4px;
+}
+
+
+.modal1 {
+    --background: rgba(44 , 39 , 45 , 0.2);
+    
+    &::part(content){
+      backdrop-filter: blur(6px);
+    }
+    .video1 {
+        margin: auto;
+    }
+    ion-toolbar {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      
+    }
+  
+    ion-content{
+      --background: transparent;
+      --padding-top: 25vh;
+      --padding-start: 20px; 
+      --padding-end: 20px; 
+    }
+    ion-card {
+      border-radius: 8px;
+      
+      direction: rtl;
+
+    
+    }
+    ion-label {
+      padding: 15px;
+      font-size: 18px;
+    }
+    ion-card-title {
+        padding: 15px;
+    }
+  }
+
+  ion-content {
+    direction: rtl;
+  }
+
+  /* ion-searchbar{
+    direction: ltr;
+    ::placeholder{
+      direction: rtl;
+    }
+  } */
+   .custom-searchbar {
+    .searchbar-input-container {
+      direction: rtl;
+    }
+   }
+   .searchbar-input {
+    text-align: right;
+   }
+   .searchbar-search-icon {
+    order: 2;
+   }
+   .searchbar-clear-icon {
+    order: 1;
+   }
+   
+ 
+

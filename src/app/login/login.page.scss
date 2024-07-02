@@ -1,0 +1,27 @@
+@font-face {
+    font-family: iransance;
+    src: url(../../assets/fonts/Iransanse.ttf);
+  }
+  * {
+      font-family: iransance !important;
+    }
+  
+
+ion-content {
+    --background: url('/assets/image/gym1.jpg') no-repeat center/cover fixed;
+
+    ion-card {
+        direction: rtl;
+        padding: 10px;
+        
+    }
+    ion-label {
+        color: black;
+        padding: 10px;
+        
+    }
+    ion-item {
+        margin-bottom: 20px;
+    }
+    
+}

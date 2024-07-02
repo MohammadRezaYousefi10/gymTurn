@@ -1,0 +1,45 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title>برنامه من</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" pullingIcon="chevron-down-circle-outline" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="scrollable">
+    <img class="img2" src="../../assets/image/hadi.jpg" alt="">
+    <ion-chip color="light">
+      <ion-avatar >
+        <img  alt="Silhouette of a person's head" src="../../assets/icon/profile1.png" />
+      </ion-avatar>
+      <ion-label color="light" >محمدرضا یوسفی</ion-label>
+    </ion-chip>
+    <ion-label class="lbl1"  slot="end">{{shamsiDate}}</ion-label>
+ 
+
+
+
+
+</div>
+</ion-content>
+  <ion-footer>
+    <ion-toolbar>
+  <ion-tabs >
+    <ion-tab-bar >
+      <ion-tab-button (click)="profile()" >
+        <img class="img1" src="../../assets/icon/athlete.png"  alt="profile">
+      </ion-tab-button>
+      <ion-tab-button (click)="meals()">
+        <img src="../../assets/icon/food.png"  alt="healthy food">  
+      </ion-tab-button>
+      <ion-tab-button (click)="Exercises()">
+        <img src="../../assets/icon/muscle.png"  alt="Exercises">
+      </ion-tab-button>
+      
+    </ion-tab-bar>
+  </ion-tabs>
+  </ion-toolbar>
+  </ion-footer>
+
