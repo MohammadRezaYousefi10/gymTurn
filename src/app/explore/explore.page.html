@@ -1,0 +1,200 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-title>ورزشکارن</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" pullingIcon="chevron-down-circle-outline" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="scrollable">
+    <!-- Users -->
+    <ion-list *ngFor="let user of data" >
+      <ion-item >
+      <ion-thumbnail slot="start">
+      <img  [src]="ImageUrl(user.profileImage)"  class="profile-image"  alt="fitness" >
+      </ion-thumbnail>
+      <ion-label>
+      <h2 >{{user.username}}</h2>
+      <p>{{user.sport}}</p>
+      </ion-label>
+      <ion-button *ngIf="isAdmin()" (click)="openModal(user)"  fill="outline" slot="end" >
+        نوشتن برنامه
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      
+    </ion-item>
+  </ion-list> 
+
+  <!-- big Modal -->
+    <div *ngIf="selectedUser" class="modal">
+      <ion-card> 
+
+      
+          <ion-icon name="close-outline" class="close" (click)="selectedUser = null"> </ion-icon>
+          <ion-button color="danger" class="delete"  (click)="confirmDelete(selectedUser._id)" ><ion-icon name="trash-outline"></ion-icon></ion-button>
+          
+          
+        
+         <ion-card-content  class="modal-content">
+          <ion-avatar >
+            <img [src]="ImageUrl(selectedUser.profileImage)"  class="profile-image" alt="profile" >
+          </ion-avatar>
+          
+            
+              <ion-text >نام و نام‌خانوادگی : {{selectedUser.username}}</ion-text> 
+              <br> 
+              <ion-text >سن : {{selectedUser.age}}</ion-text> 
+              <br>  
+              <ion-text > شماره همراه : {{selectedUser.mobile}}</ion-text>   
+              <br>
+              <ion-text >وزن : {{selectedUser.weight}}</ion-text> 
+              <br>  
+              <ion-text > قد : {{selectedUser.height}}</ion-text>   
+              <br>  
+              <ion-text > رشته ورزشی : {{selectedUser.sport}}</ion-text>   
+           
+          
+        </ion-card-content> 
+
+        <form (ngSubmit)="submitWorkoutPlan()">
+          <div class="form-group">
+            <label for="workoutName">نام برنامه تمرینی</label>
+            <input type="text" id="workoutName" [(ngModel)]="workoutPlan.name" name="workoutName" required>
+          </div>
+    
+          <div class="form-group">
+            <label for="workoutDescription">توضیحات برنامه</label>
+            <textarea id="workoutDescription" [(ngModel)]="workoutPlan.description" name="workoutDescription" required></textarea>
+          </div>
+    
+          <div class="form-group">
+            <label>تمرینات</label>
+            <ul>
+              <li *ngFor="let ex of workoutPlan.exercises">
+                {{ex.name}} --
+                {{ex.reps}} --
+                {{ex.sets}} --
+              </li>
+            </ul>
+            <img src="../../assets/icon/plus.png" (click)="addExercise()"  alt="add">
+       
+          </div>
+    
+          <ion-button  type="submit" size="full" color="success" expand="block" shape="round">ارسال برنامه</ion-button>
+        </form>
+        
+      </ion-card>
+   
+     
+        
+      
+    </div>
+
+    <!-- card -->
+    
+        
+  
+   
+   
+
+   <!-- <div *ngIf="selectedUser" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="selectedUser = null">
+        &times;
+      </span>
+      <h2>{{selectedUser.username}}</h2>
+      <p>shomare: {{selectedUser.mobile}}</p>
+    </div>
+
+   </div> -->
+
+
+
+
+  
+  <!-- modal 1 -->
+  <!-- <ion-modal [isOpen]="is_open_1">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">  
+            <ion-button fill="clear" (click)="close()">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+              
+            </ion-button>
+          </ion-buttons>
+          <ion-title>sdad</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item lines="none" >
+          <ion-thumbnail slot="start">
+            <img alt="Abs" class="img1" src="../../assets/image/zir baghal kham.jpg" />
+          </ion-thumbnail>
+          
+            <ion-text >زیر بقل خم</ion-text>   
+          <ion-icon slot="end"  name="chevron-back-outline"></ion-icon>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+      
+  <!-- modal 2 -->
+  <!-- <ion-modal [isOpen]="is_open_2">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="end">  
+            <ion-button fill="clear" (click)="close()">
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+              
+            </ion-button>
+          </ion-buttons>
+          <ion-title>پشت</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-item lines="none" >
+          <ion-thumbnail slot="start">
+            <img alt="Abs" class="img1" src="../../assets/image/zir baghal kham.jpg" />
+          </ion-thumbnail>
+          
+            <ion-text >زیر بقل خم</ion-text>   
+          <ion-icon slot="end"  name="chevron-back-outline"></ion-icon>
+        </ion-item>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+      
+
+    
+
+
+
+  </div>
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+<ion-tabs >
+  <ion-tab-bar >
+    <ion-tab-button (click)="profile()" >
+      <img src="../../assets/icon/athlete.png"  alt="profile">
+    </ion-tab-button>
+    <ion-tab-button (click)="explore()" >
+      <img class="img1" src="../../assets/icon/search.png"  alt="profile">
+    </ion-tab-button>
+    <ion-tab-button (click)="meals()">
+      <img  src="../../assets/icon/food.png"  alt="healthy food">  
+    </ion-tab-button>
+    <ion-tab-button (click)="Exercises()">
+      <img src="../../assets/icon/muscle.png"  alt="Exercises">
+    </ion-tab-button>
+    
+  </ion-tab-bar>
+</ion-tabs>
+</ion-toolbar>
+</ion-footer>

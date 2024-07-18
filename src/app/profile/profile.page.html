@@ -4,21 +4,92 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" >
+  <!-- Header -->
   <ion-refresher slot="fixed" pullingIcon="chevron-down-circle-outline" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <div class="scrollable">
-    <img class="img2" src="../../assets/image/hadi.jpg" alt="">
-    <ion-chip color="light">
+  <div class="scrollable"> 
+    <img class="img2" src="../../assets/image/hadi banner fo application1.jpg" alt="">
+    <ion-chip (click)="presentAlert()"  color="light">
       <ion-avatar >
         <img  alt="Silhouette of a person's head" src="../../assets/icon/profile1.png" />
       </ion-avatar>
-      <ion-label color="light" >محمدرضا یوسفی</ion-label>
+      <ion-label color="light" >{{fullname_1}}</ion-label>
     </ion-chip>
-    <ion-label class="lbl1"  slot="end">{{shamsiDate}}</ion-label>
- 
+    <!-- image upload -->
+     <div class="profile-container">
+      <div class="profile-image-wrapper">
+        <img [src]="profileImageUrl || defultImage" class="profile-image" alt="profileImage">
+        <ion-icon name="camera" class="edit-icon" (click)="chooseFile()"></ion-icon>
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
 
+      </div>
+      <ion-button expand="block" color="success" (click)="uploadProfileImage()"  >ثبت تصویر</ion-button>
+     <!-- <ion-button expand="block" color="danger" (click)="deleteProfileImage()" *ngIf="profileImageUrl != defultImage" >Remove Photo</ion-button> -->
+     </div>
+
+    <!-- get date -->
+    <ion-label class="lbl1"  slot="end">{{shamsiDate}}</ion-label>
+    <ion-icon class="icon1" [routerLink]="['/setting']" size="large"  name="settings-outline"> </ion-icon>
+
+    
+
+    <!-- User Workout -->
+    <ion-card *ngIf="!isAdmin()">
+      <ion-card-header>
+        <ion-card-title>برنامه‌های تمرینی من</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content *ngIf="workoutPlans.length > 0; else noPlans">
+        <ion-list>
+          <ion-item *ngFor="let plan of workoutPlans">
+            <ion-label>
+              <h2>{{ plan.workoutPlan.name }}</h2>
+              <p>{{ plan.workoutPlan.description }}</p>
+              <ul>
+                <li *ngFor="let exercise of plan.workoutPlan.exercises">
+                  {{ exercise.name }} - {{ exercise.reps }} تکرار - {{ exercise.sets }} ست
+                </li>
+              </ul>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+
+      
+  
+      <ng-template #noPlans>
+        <ion-item>
+          <ion-label>برنامه تمرینی موجود نیست</ion-label>
+        </ion-item>
+      </ng-template>
+    </ion-card>
+
+    <ion-card *ngIf="isAdmin()">
+      <ion-card-header>
+        <ion-card-title>برنامه‌های تمرینی</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content *ngIf="AllworkoutPlans.length > 0;">
+        <ion-list>
+          <ion-item *ngFor="let plan of AllworkoutPlans">
+            
+            <ion-label>
+              
+              <h2>{{ plan.workoutPlan.name }}</h2>
+              <p>{{ plan.workoutPlan.description }}</p>
+              <ul>
+                <li *ngFor="let exercise of plan.workoutPlan.exercises">
+                  {{ exercise.name }} - {{ exercise.reps }} تکرار - {{ exercise.sets }} ست
+                </li>
+              </ul>
+              <p>برنامه تمرینی ارسال شده برای <span>{{ plan.userName }}</span></p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
 
 
 
@@ -30,6 +101,9 @@
     <ion-tab-bar >
       <ion-tab-button (click)="profile()" >
         <img class="img1" src="../../assets/icon/athlete.png"  alt="profile">
+      </ion-tab-button>
+      <ion-tab-button (click)="explore()" >
+        <img  src="../../assets/icon/search.png"  alt="profile">
       </ion-tab-button>
       <ion-tab-button (click)="meals()">
         <img src="../../assets/icon/food.png"  alt="healthy food">  

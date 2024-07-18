@@ -1,10 +1,12 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular/standalone';
 import { ModalComponent } from '../components/modal/modal.component';
 import { IonModal } from '@ionic/angular/common';
 import { HtmlParser } from '@angular/compiler';
+import { ServisesService } from '../myService/servises.service';
+import { SaveServiceService } from '../myService/save-service.service';
 
 
 
@@ -14,8 +16,8 @@ import { HtmlParser } from '@angular/compiler';
   templateUrl: './exercises.page.html',
   styleUrls: ['./exercises.page.scss'],
 })
-export class ExercisesPage   {
-  
+export class ExercisesPage implements OnInit  {
+  username : string = '';
   items: Array<{ label: string, img:string, description: string }> = [
     { label: 'شکم',  img:'../../assets/icon/human.png', description: 'تقویت عضلات شکم' },
     { label: 'پشت',  img:'../../assets/icon/back.png', description: 'تقویت عضلات پشت' },
@@ -49,10 +51,23 @@ export class ExercisesPage   {
   sort = '../../assets/icon/nutrition.png';
   
 
-  constructor(private router:Router , private loadingController : LoadingController ) {
+  constructor(
+    private router:Router ,
+    private loadingController : LoadingController,
+    private myService : ServisesService ,
+    private saveService : SaveServiceService
+   ) {
     this.filteredItems = [...this.items]; 
    }
-
+   
+   ngOnInit(){
+    this.username = this.saveService.getFullName();
+    
+    if (this.username == '') {
+      this.router.navigateByUrl(`login`);
+    }
+   }
+  
    filterItems(event: any) {
     const searchTerm = event.target.value.toLowerCase();
     
@@ -80,6 +95,7 @@ export class ExercisesPage   {
       handleRefresh(event:any) {
         setTimeout(() => {
           // Any calls to load data go here
+          
           event.target.complete();
         }, 2000);
       }
@@ -96,6 +112,12 @@ export class ExercisesPage   {
     const loading = await this.loadingController.create();
     await loading.present();
     await this.router.navigateByUrl(`meals`);
+    await loading.dismiss();
+  }
+  async explore(){
+    const loading = await this.loadingController.create();
+    await loading.present();
+    await this.router.navigateByUrl(`explore`);
     await loading.dismiss();
   }
 

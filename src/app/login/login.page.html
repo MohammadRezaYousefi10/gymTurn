@@ -1,28 +1,28 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button>
-
-      </ion-back-button>
-    </ion-buttons>
+  <ion-toolbar color="secondary">
+    
     <ion-title>GymTurn</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <form (submit)="login()">
+  <form >
     <ion-card>
       <ion-label>نام کاربری</ion-label>
+      <span class="span1">{{ errorMessage }}</span>
       <ion-item>
-        <ion-input type="text"></ion-input>
+        <ion-input name="user" [(ngModel)]="user_1" type="text" required="true"></ion-input>
         <ion-icon item-left name="person-outline"></ion-icon>
       </ion-item>
       <ion-label>رمز عبور </ion-label>
+      
       <ion-item>
-        <ion-input type="password" ></ion-input>
+        <ion-input name="pwd" [(ngModel)]="pwd_1" type="password"  required="true"></ion-input>
         <ion-icon item-left name="lock-closed-outline"></ion-icon>
       </ion-item>
-      <ion-button type="submit" size="full" color="success" expand="block" shape="round">ورود</ion-button>
+      <ion-button (click)="login()"  type="submit" size="full" color="success" expand="block" shape="round">ورود</ion-button>
+      <ion-button (click)="register()" size="full" color="secondary" expand="block" shape="round">ساخت اکانت</ion-button>
+      <ion-button (click)="forgotPassword()" size="full" color="warning" expand="block" shape="round">رمز عبور خود را فراموش کردی ؟ </ion-button>
     </ion-card>
   </form>
 </ion-content>

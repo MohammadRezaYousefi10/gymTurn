@@ -15,11 +15,17 @@ ion-text {
   
 .t1 {
     font-family: iransance !important;
+    padding: 5px;
 }
 
 
 * {
   font-family: iransance !important;
+}
+ion-header{
+  text-align: center;
+  margin: auto;
+
 }
 
 ion-footer {
@@ -65,11 +71,8 @@ ion-footer {
       --padding-end: 20px; 
     }
     ion-card {
-      border-radius: 8px;
-      
+      border-radius: 8px;   
       direction: rtl;
-
-    
     }
     ion-label {
       padding: 15px;

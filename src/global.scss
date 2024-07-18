@@ -35,3 +35,21 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+@font-face {
+    font-family: iransance;
+    src: url(../../gymTurn/src/assets/fonts/Iransanse.ttf);
+  }
+.alert-message {
+    font-family: iransance;
+    direction: rtl;
+    font-size: 16px; /* اندازه فونت به انتخاب شما */
+    }
+    .alert-header {
+    font-family: iransance;
+    font-size: 18px;
+    }
+    .alert-buttons {
+    font-family: iransance;
+    font-size: 18px; 
+    }

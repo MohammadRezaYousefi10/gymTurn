@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar  color="secondary">
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>تنظیمات</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form  (ngSubmit)="saveChanges()" > <!-- (ngSubmit)="register()" -->
+    <ion-card>
+      <ion-label>نام و نام خانوادگی</ion-label>
+      <span class="span1">{{ ErrorForUser }}</span>
+      <ion-item>
+        <ion-input type="text"
+         name="username" [(ngModel)]="currentUser.user" required="true" ></ion-input>
+         <ion-icon item-left name="person-outline"></ion-icon>
+        </ion-item>
+  
+      <ion-label>سن</ion-label>
+      <span class="span1">{{ ErrorForAge }}</span>
+
+      <ion-item>
+        <ion-input name="age" [(ngModel)]="currentUser.age" type="tel"></ion-input>
+        <ion-icon name="calendar-number-outline"></ion-icon>
+      </ion-item>
+
+      <ion-label>قد (سانتی متر)</ion-label>
+      <span class="span1">{{ ErrorForHeight }}</span>
+      <ion-item>
+        <ion-input name="height" [(ngModel)]="currentUser.height" type="tel"></ion-input>
+        <ion-icon name="accessibility-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>وزن (کیلوگرم)</ion-label>
+      <span class="span1">{{ ErrorForWeight }}</span>
+      <ion-item>
+        <ion-input name="weight" [(ngModel)]="currentUser.weight" type="tel"></ion-input>
+        <ion-icon name="speedometer-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>رشته ورزشی</ion-label>
+      <span class="span1">{{ ErrorForSport }}</span>
+      <ion-item>
+        <ion-input name="sport" [(ngModel)]="currentUser.sport" type="text"></ion-input>
+        <ion-icon name="barbell-outline"></ion-icon>
+      </ion-item>
+  
+      <ion-label>شماره موبایل</ion-label>
+      <span class="span1">{{ ErrorForMobile }}</span>
+      <ion-item>
+        <ion-input name="mobile" [(ngModel)]="currentUser.mobile" type="tel" ></ion-input>
+        <ion-icon item-left name="call-outline"></ion-icon>
+      </ion-item>
+
+      <ion-label> ایمیل</ion-label>
+      <span class="span1">{{ ErrorForEmail }}</span>
+      <ion-item>
+        <ion-input name="email" [(ngModel)]="currentUser.email" type="email" ></ion-input>
+        <ion-icon item-left name="mail-outline"></ion-icon>
+      </ion-item>
+
+      <ion-button  type="submit" size="full" color="success" expand="block" shape="round">ویرایش</ion-button>
+    </ion-card>
+  </form>
+</ion-content>
